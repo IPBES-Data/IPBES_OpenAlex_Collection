@@ -1,0 +1,50 @@
+name: Update collections
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # daily 00:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      API_zenodo_ro: ${{ secrets.API_ZENODO_RO }}
+      API_openalex_personal: ${{ secrets.API_OPENALEX_PERSONAL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          extra-repositories: https://openalexpro.r-universe.dev
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::targets
+            any::tarchetypes
+            any::yaml
+            any::httr2
+            any::arrow
+            any::jsonlite
+            openalexPro
+
+      - name: Run pipeline
+        run: Rscript -e 'targets::tar_make()'
+
+      # Only reached when the pipeline succeeded.
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output README.md
+          git diff --cached --quiet || git commit -m "Update collections $(date -u +%Y-%m-%d)"
+          git push

@@ -1,0 +1,25 @@
+{
+  "via": "members",
+  "parts": 2,
+  "parts_file": "_parts.parquet",
+  "credits": 4,
+  "members_added": true,
+  "added": 565,
+  "already_present": 0,
+  "records": 565,
+  "started": "2026-11-18T18:22:15Z",
+  "finished": "2026-11-18T18:22:17Z",
+  "openalexPro": "0.16.0.9000",
+  "collection_id": "col_QRAWEuXftG",
+  "collection_url": "https://openalex.org/collections/col_QRAWEuXftG",
+  "display_name": "IPBES Zenodo",
+  "entity_type": "works",
+  "member_count": 565,
+  "access": "shared_by_link",
+  "created_date": "2026-11-18",
+  "updated_date": "2026-11-18T18:22:16.559811",
+  "select": [
+    "id",
+    "doi"
+  ]
+}

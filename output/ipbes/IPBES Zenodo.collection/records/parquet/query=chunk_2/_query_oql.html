@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAlex query (OQL)</title>
+<style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--box:#f6f8fa;--line:#d1d9e0;
+--kw:#8250df;--bool:#cf222e;--str:#0a3069;--num:#0550ae;--label:#116329;
+--ok:#1a7f37;--warn:#9a6700;}
+@media (prefers-color-scheme: dark){:root{--bg:#0d1117;--fg:#e6edf3;--muted:#9198a1;
+--box:#161b22;--line:#3d444d;--kw:#d2a8ff;--bool:#ff7b72;--str:#a5d6ff;
+--num:#79c0ff;--label:#7ee787;--ok:#3fb950;--warn:#d29922;}}
+body{background:var(--bg);color:var(--fg);margin:0 auto;max-width:920px;
+padding:24px 16px;font:15px/1.5 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;}
+h1{font-size:20px;margin:0 0 4px}
+.meta{color:var(--muted);margin:0 0 16px}
+pre{background:var(--box);border:1px solid var(--line);border-radius:6px;
+padding:14px 16px;overflow-x:auto;font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+white-space:pre-wrap;word-break:break-word;}
+.kw{color:var(--kw);font-weight:600}.bool{color:var(--bool);font-weight:700}
+.str{color:var(--str)}.num{color:var(--num)}
+.label{color:var(--label);text-decoration:none;border-bottom:1px dotted var(--label)}
+.note{border-left:4px solid var(--line);padding:6px 12px;margin:0 0 16px;background:var(--box)}
+.note.exact{border-color:var(--ok)}.note.inexact{border-color:var(--warn)}
+details{margin-top:16px}summary{cursor:pointer;color:var(--muted)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
+.summary{border-collapse:collapse;width:100%;margin:0 0 20px}
+.summary th,.summary td{text-align:left;padding:4px 10px;border-bottom:1px solid var(--line)}
+.summary td.n{text-align:right;font-variant-numeric:tabular-nums}
+.summary a{color:var(--fg)}
+h2{font-size:16px;margin:28px 0 4px}
+.badge{font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.badge.exact{color:var(--ok);border-color:var(--ok)}.badge.inexact{color:var(--warn);border-color:var(--warn)}
+</style></head><body>
+<h1>OpenAlex query</h1>
+<p class="meta">66 records &middot; downloaded 2026-11-18 (UTC) &middot; openalexPro 0.16.0.9000</p>
+<p class="note exact">Exact: this OQL translates back to exactly the query that ran.</p>
+<pre><span class="kw">get</span> works (all corpora) <span class="kw">where</span> DOI <span class="kw">is</span> (<span class="num">10.5281</span>/zenodo.<span class="num">17074573</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17074600</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17185116</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17238915</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17239488</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17397835</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17960225</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20070374</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20133584</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20158699</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20159795</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20159832</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20159860</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20159903</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20159925</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20159957</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20267276</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20314607</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20425322</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20734826</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20735069</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20735133</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20735275</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20735290</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20798762</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">20798781</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21026252</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21062572</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21063493</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21106298</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21128424</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21158535</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21217176</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21218040</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21221576</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21222515</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21280216</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21280449</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21281475</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21333513</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21333887</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21334783</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21357480</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21661958</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21770129</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21770693</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21771018</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21771324</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21771828</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21774836</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21791207</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21791444</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">21792090</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">22095607</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">22100001</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">22277985</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">22281278</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">22766308</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">22766338</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23419653</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23662180</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23662892</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23664985</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23665392</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23665609</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">23727408</span>)</pre>
+<details><summary>Exact query (OQO)</summary>
+<pre>{
+  "get_rows": "works",
+  "corpus": "all",
+  "filter_rows": [
+    {
+      "join": "or",
+      "filters": [
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17074573"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17074600"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17185116"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17238915"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17239488"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17397835"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17960225"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20070374"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20133584"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20158699"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20159795"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20159832"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20159860"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20159903"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20159925"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20159957"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20267276"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20314607"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20425322"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20734826"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20735069"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20735133"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20735275"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20735290"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20798762"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.20798781"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21026252"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21062572"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21063493"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21106298"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21128424"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21158535"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21217176"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21218040"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21221576"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21222515"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21280216"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21280449"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21281475"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21333513"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21333887"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21334783"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21357480"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21661958"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21770129"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21770693"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21771018"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21771324"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21771828"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21774836"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21791207"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21791444"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.21792090"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.22095607"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.22100001"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.22277985"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.22281278"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.22766308"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.22766338"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23419653"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23662180"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23662892"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23664985"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23665392"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23665609"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.23727408"
+        }
+      ]
+    }
+  ]
+}</pre></details>
+<details><summary>Request URL</summary>
+<p><code>https://api.openalex.org/works?filter=doi%3A10.5281%2Fzenodo.17074573%7C10.5281%2Fzenodo.17074600%7C10.5281%2Fzenodo.20070374%7C10.5281%2Fzenodo.20133584%7C10.5281%2Fzenodo.20267276%7C10.5281%2Fzenodo.20314607%7C10.5281%2Fzenodo.17239488%7C10.5281%2Fzenodo.17238915%7C10.5281%2Fzenodo.20425322%7C10.5281%2Fzenodo.20158699%7C10.5281%2Fzenodo.20159795%7C10.5281%2Fzenodo.20159832%7C10.5281%2Fzenodo.20159860%7C10.5281%2Fzenodo.20159903%7C10.5281%2Fzenodo.20159925%7C10.5281%2Fzenodo.20159957%7C10.5281%2Fzenodo.21026252%7C10.5281%2Fzenodo.21062572%7C10.5281%2Fzenodo.21063493%7C10.5281%2Fzenodo.21106298%7C10.5281%2Fzenodo.21128424%7C10.5281%2Fzenodo.21158535%7C10.5281%2Fzenodo.21217176%7C10.5281%2Fzenodo.21218040%7C10.5281%2Fzenodo.21221576%7C10.5281%2Fzenodo.21222515%7C10.5281%2Fzenodo.21280216%7C10.5281%2Fzenodo.21280449%7C10.5281%2Fzenodo.21281475%7C10.5281%2Fzenodo.21333513%7C10.5281%2Fzenodo.21333887%7C10.5281%2Fzenodo.21334783%7C10.5281%2Fzenodo.21357480%7C10.5281%2Fzenodo.17185116%7C10.5281%2Fzenodo.21770129%7C10.5281%2Fzenodo.21770693%7C10.5281%2Fzenodo.21771018%7C10.5281%2Fzenodo.21771324%7C10.5281%2Fzenodo.21771828%7C10.5281%2Fzenodo.21774836%7C10.5281%2Fzenodo.21791207%7C10.5281%2Fzenodo.21791444%7C10.5281%2Fzenodo.21792090%7C10.5281%2Fzenodo.20734826%7C10.5281%2Fzenodo.20735133%7C10.5281%2Fzenodo.20735069%7C10.5281%2Fzenodo.20735290%7C10.5281%2Fzenodo.20735275%7C10.5281%2Fzenodo.21661958%7C10.5281%2Fzenodo.22100001%7C10.5281%2Fzenodo.22095607%7C10.5281%2Fzenodo.17960225%7C10.5281%2Fzenodo.17397835%7C10.5281%2Fzenodo.22277985%7C10.5281%2Fzenodo.22281278%7C10.5281%2Fzenodo.20798781%7C10.5281%2Fzenodo.22766308%7C10.5281%2Fzenodo.22766338%7C10.5281%2Fzenodo.23419653%7C10.5281%2Fzenodo.23662892%7C10.5281%2Fzenodo.23664985%7C10.5281%2Fzenodo.23727408%7C10.5281%2Fzenodo.23665609%7C10.5281%2Fzenodo.23665392%7C10.5281%2Fzenodo.23662180%7C10.5281%2Fzenodo.20798762&amp;corpus=all&amp;select=id%2Cdoi</code></p></details>
+</body></html>

@@ -1,0 +1,2052 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAlex query (OQL)</title>
+<style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--box:#f6f8fa;--line:#d1d9e0;
+--kw:#8250df;--bool:#cf222e;--str:#0a3069;--num:#0550ae;--label:#116329;
+--ok:#1a7f37;--warn:#9a6700;}
+@media (prefers-color-scheme: dark){:root{--bg:#0d1117;--fg:#e6edf3;--muted:#9198a1;
+--box:#161b22;--line:#3d444d;--kw:#d2a8ff;--bool:#ff7b72;--str:#a5d6ff;
+--num:#79c0ff;--label:#7ee787;--ok:#3fb950;--warn:#d29922;}}
+body{background:var(--bg);color:var(--fg);margin:0 auto;max-width:920px;
+padding:24px 16px;font:15px/1.5 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;}
+h1{font-size:20px;margin:0 0 4px}
+.meta{color:var(--muted);margin:0 0 16px}
+pre{background:var(--box);border:1px solid var(--line);border-radius:6px;
+padding:14px 16px;overflow-x:auto;font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+white-space:pre-wrap;word-break:break-word;}
+.kw{color:var(--kw);font-weight:600}.bool{color:var(--bool);font-weight:700}
+.str{color:var(--str)}.num{color:var(--num)}
+.label{color:var(--label);text-decoration:none;border-bottom:1px dotted var(--label)}
+.note{border-left:4px solid var(--line);padding:6px 12px;margin:0 0 16px;background:var(--box)}
+.note.exact{border-color:var(--ok)}.note.inexact{border-color:var(--warn)}
+details{margin-top:16px}summary{cursor:pointer;color:var(--muted)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
+.summary{border-collapse:collapse;width:100%;margin:0 0 20px}
+.summary th,.summary td{text-align:left;padding:4px 10px;border-bottom:1px solid var(--line)}
+.summary td.n{text-align:right;font-variant-numeric:tabular-nums}
+.summary a{color:var(--fg)}
+h2{font-size:16px;margin:28px 0 4px}
+.badge{font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.badge.exact{color:var(--ok);border-color:var(--ok)}.badge.inexact{color:var(--warn);border-color:var(--warn)}
+</style></head><body>
+<h1>OpenAlex query</h1>
+<p class="meta">499 records &middot; downloaded 2026-11-18 (UTC) &middot; openalexPro 0.16.0.9000</p>
+<p class="note exact">Exact: this OQL translates back to exactly the query that ran.</p>
+<pre><span class="kw">get</span> works (all corpora) <span class="kw">where</span> DOI <span class="kw">is</span> (<span class="num">10.5281</span>/zenodo.<span class="num">10026756</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10057013</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10057025</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10057029</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10057031</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10057035</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10057037</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10090349</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10101029</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10103271</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10118714</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119407</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119430</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119472</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119510</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119539</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119624</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119749</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119871</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119959</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10119985</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10120032</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10218646</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10245399</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10246572</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10250533</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10250563</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10250609</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10251325</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10251349</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10251408</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10252250</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10252304</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10252319</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10252510</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10260233</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10264135</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10361929</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10404413</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10408375</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10785078</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10844982</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10961204</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10961206</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10961208</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">10990924</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11274354</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11274695</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11275103</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11275190</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11275414</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11332371</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11333628</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11334622</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11344773</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11345589</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11352061</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11370839</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11381693</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382215</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382223</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382230</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382238</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382240</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382244</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382246</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11382248</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389147</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389207</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389258</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389424</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389482</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389529</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11389553</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11577374</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11577965</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11578604</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11579133</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11579456</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11580409</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11580477</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11580588</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11611393</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11613449</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11613859</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11657377</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11657639</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">11657981</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12783316</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12785745</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12785911</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12786115</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12787400</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12787554</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12787976</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12789799</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12790886</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">12790967</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13349862</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13373914</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13373933</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13373942</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13789299</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13844092</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850054</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850289</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850293</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850301</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850303</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850305</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850309</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850315</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850321</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850325</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850331</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850339</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850345</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850349</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13850355</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13862423</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13862495</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13881042</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13881127</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913181</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913195</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913224</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913255</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913265</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913273</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13913292</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13919783</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13926219</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13931439</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13931482</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">13931517</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14016571</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14170024</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14170073</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14170090</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14170119</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14170145</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14170165</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14187014</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14187169</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14187185</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14187208</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14187233</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14190657</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14190721</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14190868</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14190898</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14190949</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14242913</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14258309</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14793947</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">14793950</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">15144712</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">15706463</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">15878027</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">16416225</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17052006</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17074175</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17074303</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17074410</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17074500</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17100213</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17358329</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17358352</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17358421</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17358473</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17358519</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17368668</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17392843</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17515478</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17515558</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17515652</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17515806</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17515842</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17517676</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17517700</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17517727</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17517760</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17517789</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518331</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518349</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518368</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518372</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518391</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518399</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518422</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518808</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518836</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518846</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17518849</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17522924</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17523195</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">17940756</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18187022</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18196173</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18799442</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18799804</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18800061</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18800242</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">18800413</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">19084007</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">19702935</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">2616457</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">2616892</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">2616896</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">2616910</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3235274</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3235428</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3235492</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236027</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236029</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236098</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236177</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236188</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236252</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3236291</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237373</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237382</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237392</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237410</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237421</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237428</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237467</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237500</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237560</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237576</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237578</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237600</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237602</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237608</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237611</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237617</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237623</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237625</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237631</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237644</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237662</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3237664</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3402856</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3551078</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3553458</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3603071</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3630390</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3730468</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3732096</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826589</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826597</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826599</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826603</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826616</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826698</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3826766</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3831673</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3831852</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3831881</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3832005</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3832035</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3832052</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3832073</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3832099</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3832107</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3923633</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">3975693</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014762</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014790</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014792</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014796</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014798</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014802</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014804</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014814</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014818</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014820</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014824</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014830</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014832</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4014834</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018578</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018580</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018591</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018603</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018610</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018615</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018619</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018621</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018629</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018633</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018635</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018639</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018643</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018647</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018653</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018655</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018663</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018667</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4018673</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4020373</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4049924</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4071755</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4087879</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4095065</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4121915</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4147317</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4327515</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4329103</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4331126</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4338411</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4363069</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4379171</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4380980</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4390417</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4390995</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4391335</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4394267</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4394498</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4394520</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4394547</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4395985</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4396203</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4396271</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4396278</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4396289</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4396319</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4396349</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4399373</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4399386</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4399396</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4399907</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4404320</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4404436</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4404612</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4404678</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4422075</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4422079</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4439411</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4559136</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4559153</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4559188</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4659158</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4659811</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4663236</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4727603</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4756596</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4756667</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4782538</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">4957886</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5020598</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5020606</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5046947</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5502689</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5509137</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5509739</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5513473</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5518254</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5529361</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5533042</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5533052</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5533488</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5535113</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5553573</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5587987</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5588374</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5588389</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5588440</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5591058</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5591070</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5706520</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5706616</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5713976</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5717444</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5717451</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5722695</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5725705</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5746075</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5760266</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5762737</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5762739</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5766069</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5783347</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5846542</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5883632</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">5887667</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6036273</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6049358</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6053970</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6322965</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6396542</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6418520</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6425599</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6425671</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6448567</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6451322</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6451494</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6451922</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6452037</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6452090</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6452576</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6452651</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6452917</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453019</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453056</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453071</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453079</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453095</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453131</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453135</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453169</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453184</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453228</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453277</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453381</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6453483</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6462960</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6472995</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6473133</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6522392</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6522522</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6541455</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6586750</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6627390</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6655925</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6861060</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">6882517</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7007510</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7007656</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7009633</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7009726</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7009828</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7009878</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7038225</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7051350</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7075903</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7076484</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7079749</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7079804</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7079991</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7080315</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7086661</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7101806</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7101955</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7101992</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7151692</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430682</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430692</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430723</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430725</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430727</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430731</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430733</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7430747</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7560099</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7568074</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7568204</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7615582</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7664094</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7664102</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7684120</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7738820</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7738965</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7840018</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7857828</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7858651</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7861123</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7861139</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7861162</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">7964809</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8031019</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8031519</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8031802</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8031821</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8031834</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8031944</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8032105</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8032211</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8032327</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8035280</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8035344</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8035352</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8036425</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8036498</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8036544</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8036828</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8036879</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8037007</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8037086</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8037235</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8041593</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8045527</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8045784</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8045887</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8046326</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8046424</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8046442</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8171338</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8231570</span> <span class="kw">or</span> <span class="num">10.5281</span>/zenodo.<span class="num">8285639</span>)</pre>
+<details><summary>Exact query (OQO)</summary>
+<pre>{
+  "get_rows": "works",
+  "corpus": "all",
+  "filter_rows": [
+    {
+      "join": "or",
+      "filters": [
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10026756"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10057013"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10057025"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10057029"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10057031"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10057035"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10057037"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10090349"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10101029"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10103271"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10118714"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119407"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119430"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119472"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119510"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119539"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119624"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119749"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119871"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119959"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10119985"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10120032"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10218646"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10245399"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10246572"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10250533"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10250563"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10250609"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10251325"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10251349"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10251408"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10252250"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10252304"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10252319"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10252510"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10260233"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10264135"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10361929"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10404413"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10408375"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10785078"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10844982"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10961204"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10961206"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10961208"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.10990924"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11274354"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11274695"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11275103"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11275190"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11275414"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11332371"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11333628"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11334622"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11344773"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11345589"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11352061"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11370839"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11381693"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382215"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382223"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382230"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382238"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382240"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382244"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382246"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11382248"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389147"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389207"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389258"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389424"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389482"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389529"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11389553"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11577374"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11577965"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11578604"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11579133"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11579456"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11580409"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11580477"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11580588"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11611393"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11613449"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11613859"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11657377"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11657639"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.11657981"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12783316"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12785745"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12785911"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12786115"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12787400"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12787554"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12787976"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12789799"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12790886"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.12790967"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13349862"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13373914"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13373933"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13373942"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13789299"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13844092"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850054"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850289"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850293"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850301"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850303"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850305"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850309"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850315"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850321"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850325"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850331"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850339"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850345"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850349"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13850355"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13862423"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13862495"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13881042"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13881127"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913181"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913195"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913224"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913255"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913265"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913273"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13913292"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13919783"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13926219"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13931439"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13931482"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.13931517"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14016571"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14170024"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14170073"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14170090"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14170119"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14170145"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14170165"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14187014"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14187169"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14187185"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14187208"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14187233"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14190657"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14190721"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14190868"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14190898"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14190949"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14242913"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14258309"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14793947"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.14793950"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.15144712"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.15706463"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.15878027"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.16416225"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17052006"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17074175"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17074303"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17074410"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17074500"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17100213"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17358329"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17358352"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17358421"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17358473"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17358519"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17368668"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17392843"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17515478"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17515558"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17515652"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17515806"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17515842"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17517676"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17517700"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17517727"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17517760"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17517789"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518331"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518349"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518368"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518372"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518391"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518399"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518422"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518808"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518836"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518846"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17518849"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17522924"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17523195"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.17940756"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18187022"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18196173"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18799442"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18799804"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18800061"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18800242"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.18800413"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.19084007"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.19702935"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.2616457"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.2616892"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.2616896"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.2616910"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3235274"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3235428"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3235492"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236027"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236029"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236098"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236177"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236188"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236252"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3236291"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237373"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237382"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237392"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237410"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237421"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237428"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237467"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237500"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237560"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237576"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237578"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237600"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237602"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237608"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237611"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237617"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237623"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237625"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237631"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237644"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237662"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3237664"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3402856"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3551078"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3553458"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3603071"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3630390"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3730468"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3732096"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826589"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826597"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826599"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826603"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826616"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826698"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3826766"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3831673"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3831852"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3831881"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3832005"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3832035"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3832052"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3832073"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3832099"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3832107"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3923633"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.3975693"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014762"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014790"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014792"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014796"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014798"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014802"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014804"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014814"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014818"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014820"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014824"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014830"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014832"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4014834"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018578"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018580"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018591"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018603"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018610"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018615"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018619"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018621"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018629"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018633"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018635"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018639"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018643"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018647"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018653"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018655"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018663"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018667"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4018673"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4020373"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4049924"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4071755"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4087879"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4095065"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4121915"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4147317"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4327515"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4329103"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4331126"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4338411"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4363069"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4379171"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4380980"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4390417"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4390995"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4391335"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4394267"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4394498"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4394520"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4394547"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4395985"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4396203"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4396271"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4396278"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4396289"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4396319"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4396349"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4399373"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4399386"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4399396"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4399907"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4404320"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4404436"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4404612"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4404678"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4422075"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4422079"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4439411"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4559136"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4559153"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4559188"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4659158"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4659811"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4663236"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4727603"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4756596"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4756667"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4782538"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.4957886"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5020598"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5020606"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5046947"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5502689"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5509137"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5509739"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5513473"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5518254"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5529361"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5533042"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5533052"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5533488"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5535113"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5553573"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5587987"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5588374"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5588389"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5588440"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5591058"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5591070"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5706520"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5706616"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5713976"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5717444"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5717451"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5722695"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5725705"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5746075"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5760266"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5762737"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5762739"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5766069"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5783347"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5846542"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5883632"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.5887667"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6036273"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6049358"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6053970"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6322965"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6396542"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6418520"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6425599"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6425671"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6448567"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6451322"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6451494"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6451922"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6452037"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6452090"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6452576"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6452651"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6452917"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453019"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453056"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453071"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453079"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453095"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453131"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453135"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453169"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453184"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453228"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453277"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453381"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6453483"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6462960"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6472995"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6473133"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6522392"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6522522"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6541455"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6586750"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6627390"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6655925"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6861060"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.6882517"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7007510"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7007656"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7009633"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7009726"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7009828"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7009878"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7038225"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7051350"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7075903"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7076484"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7079749"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7079804"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7079991"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7080315"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7086661"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7101806"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7101955"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7101992"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7151692"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430682"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430692"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430723"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430725"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430727"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430731"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430733"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7430747"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7560099"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7568074"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7568204"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7615582"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7664094"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7664102"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7684120"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7738820"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7738965"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7840018"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7857828"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7858651"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7861123"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7861139"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7861162"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.7964809"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8031019"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8031519"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8031802"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8031821"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8031834"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8031944"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8032105"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8032211"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8032327"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8035280"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8035344"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8035352"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8036425"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8036498"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8036544"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8036828"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8036879"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8037007"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8037086"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8037235"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8041593"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8045527"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8045784"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8045887"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8046326"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8046424"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8046442"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8171338"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8231570"
+        },
+        {
+          "column_id": "doi",
+          "value": "10.5281/zenodo.8285639"
+        }
+      ]
+    }
+  ]
+}</pre></details>
+<details><summary>Request URL</summary>
+<p><code>https://api.openalex.org/works?filter=doi%3A10.5281%2Fzenodo.2616457%7C10.5281%2Fzenodo.2616892%7C10.5281%2Fzenodo.2616896%7C10.5281%2Fzenodo.2616910%7C10.5281%2Fzenodo.3235274%7C10.5281%2Fzenodo.3235428%7C10.5281%2Fzenodo.3235492%7C10.5281%2Fzenodo.3236027%7C10.5281%2Fzenodo.3236029%7C10.5281%2Fzenodo.3236098%7C10.5281%2Fzenodo.3236177%7C10.5281%2Fzenodo.3236188%7C10.5281%2Fzenodo.3236252%7C10.5281%2Fzenodo.3236291%7C10.5281%2Fzenodo.3237373%7C10.5281%2Fzenodo.3237382%7C10.5281%2Fzenodo.3237392%7C10.5281%2Fzenodo.3237410%7C10.5281%2Fzenodo.3237421%7C10.5281%2Fzenodo.3237428%7C10.5281%2Fzenodo.3237467%7C10.5281%2Fzenodo.3237500%7C10.5281%2Fzenodo.3237560%7C10.5281%2Fzenodo.3237576%7C10.5281%2Fzenodo.3237578%7C10.5281%2Fzenodo.3237600%7C10.5281%2Fzenodo.3237602%7C10.5281%2Fzenodo.3237608%7C10.5281%2Fzenodo.3237611%7C10.5281%2Fzenodo.3237617%7C10.5281%2Fzenodo.3237623%7C10.5281%2Fzenodo.3237625%7C10.5281%2Fzenodo.3237631%7C10.5281%2Fzenodo.3237644%7C10.5281%2Fzenodo.3237662%7C10.5281%2Fzenodo.3237664%7C10.5281%2Fzenodo.3402856%7C10.5281%2Fzenodo.3553458%7C10.5281%2Fzenodo.3551078%7C10.5281%2Fzenodo.3630390%7C10.5281%2Fzenodo.3732096%7C10.5281%2Fzenodo.3826589%7C10.5281%2Fzenodo.3826597%7C10.5281%2Fzenodo.3826599%7C10.5281%2Fzenodo.3826603%7C10.5281%2Fzenodo.3826616%7C10.5281%2Fzenodo.3826698%7C10.5281%2Fzenodo.3826766%7C10.5281%2Fzenodo.3831852%7C10.5281%2Fzenodo.3831881%7C10.5281%2Fzenodo.3832005%7C10.5281%2Fzenodo.3832035%7C10.5281%2Fzenodo.3832052%7C10.5281%2Fzenodo.3832073%7C10.5281%2Fzenodo.3832099%7C10.5281%2Fzenodo.3832107%7C10.5281%2Fzenodo.3603071%7C10.5281%2Fzenodo.3923633%7C10.5281%2Fzenodo.3730468%7C10.5281%2Fzenodo.4014814%7C10.5281%2Fzenodo.4014818%7C10.5281%2Fzenodo.4018635%7C10.5281%2Fzenodo.4014830%7C10.5281%2Fzenodo.4014832%7C10.5281%2Fzenodo.3975693%7C10.5281%2Fzenodo.4014804%7C10.5281%2Fzenodo.4018633%7C10.5281%2Fzenodo.4071755%7C10.5281%2Fzenodo.4049924%7C10.5281%2Fzenodo.4087879%7C10.5281%2Fzenodo.4018580%7C10.5281%2Fzenodo.4018591%7C10.5281%2Fzenodo.4147317%7C10.5281%2Fzenodo.4014834%7C10.5281%2Fzenodo.4018603%7C10.5281%2Fzenodo.4018647%7C10.5281%2Fzenodo.4018610%7C10.5281%2Fzenodo.4018619%7C10.5281%2Fzenodo.4018615%7C10.5281%2Fzenodo.4018629%7C10.5281%2Fzenodo.4018653%7C10.5281%2Fzenodo.4018655%7C10.5281%2Fzenodo.4018621%7C10.5281%2Fzenodo.4121915%7C10.5281%2Fzenodo.4095065%7C10.5281%2Fzenodo.4018578%7C10.5281%2Fzenodo.4018639%7C10.5281%2Fzenodo.4018643%7C10.5281%2Fzenodo.4014820%7C10.5281%2Fzenodo.4018667%7C10.5281%2Fzenodo.4329103%7C10.5281%2Fzenodo.4331126%7C10.5281%2Fzenodo.4338411%7C10.5281%2Fzenodo.4018663%7C10.5281%2Fzenodo.4014802%7C10.5281%2Fzenodo.4014798%7C10.5281%2Fzenodo.4014792%7C10.5281%2Fzenodo.4014790%7C10.5281%2Fzenodo.4014762%7C10.5281%2Fzenodo.4363069%7C10.5281%2Fzenodo.4379171%7C10.5281%2Fzenodo.4380980%7C10.5281%2Fzenodo.4390417%7C10.5281%2Fzenodo.4390995%7C10.5281%2Fzenodo.4391335%7C10.5281%2Fzenodo.4394267%7C10.5281%2Fzenodo.4394498%7C10.5281%2Fzenodo.4394520%7C10.5281%2Fzenodo.4394547%7C10.5281%2Fzenodo.4395985%7C10.5281%2Fzenodo.4396203%7C10.5281%2Fzenodo.4396271%7C10.5281%2Fzenodo.4396278%7C10.5281%2Fzenodo.4396289%7C10.5281%2Fzenodo.4396319%7C10.5281%2Fzenodo.4396349%7C10.5281%2Fzenodo.4399373%7C10.5281%2Fzenodo.4399386%7C10.5281%2Fzenodo.4399396%7C10.5281%2Fzenodo.4399907%7C10.5281%2Fzenodo.4404320%7C10.5281%2Fzenodo.4404436%7C10.5281%2Fzenodo.4404612%7C10.5281%2Fzenodo.4404678%7C10.5281%2Fzenodo.4014796%7C10.5281%2Fzenodo.4020373%7C10.5281%2Fzenodo.4422075%7C10.5281%2Fzenodo.4422079%7C10.5281%2Fzenodo.4014824%7C10.5281%2Fzenodo.4559136%7C10.5281%2Fzenodo.4559153%7C10.5281%2Fzenodo.4559188%7C10.5281%2Fzenodo.4439411%7C10.5281%2Fzenodo.4018673%7C10.5281%2Fzenodo.4659811%7C10.5281%2Fzenodo.4663236%7C10.5281%2Fzenodo.4659158%7C10.5281%2Fzenodo.4727603%7C10.5281%2Fzenodo.4756596%7C10.5281%2Fzenodo.4756667%7C10.5281%2Fzenodo.4782538%7C10.5281%2Fzenodo.4957886%7C10.5281%2Fzenodo.3831673%7C10.5281%2Fzenodo.5020598%7C10.5281%2Fzenodo.5020606%7C10.5281%2Fzenodo.4327515%7C10.5281%2Fzenodo.5046947%7C10.5281%2Fzenodo.5502689%7C10.5281%2Fzenodo.5509739%7C10.5281%2Fzenodo.5518254%7C10.5281%2Fzenodo.5529361%7C10.5281%2Fzenodo.5509137%7C10.5281%2Fzenodo.5533042%7C10.5281%2Fzenodo.5533052%7C10.5281%2Fzenodo.5553573%7C10.5281%2Fzenodo.5587987%7C10.5281%2Fzenodo.5588374%7C10.5281%2Fzenodo.5588389%7C10.5281%2Fzenodo.5588440%7C10.5281%2Fzenodo.5535113%7C10.5281%2Fzenodo.5533488%7C10.5281%2Fzenodo.5591058%7C10.5281%2Fzenodo.5591070%7C10.5281%2Fzenodo.5722695%7C10.5281%2Fzenodo.5717444%7C10.5281%2Fzenodo.5717451%7C10.5281%2Fzenodo.5706520%7C10.5281%2Fzenodo.5746075%7C10.5281%2Fzenodo.5762739%7C10.5281%2Fzenodo.5760266%7C10.5281%2Fzenodo.5766069%7C10.5281%2Fzenodo.5706616%7C10.5281%2Fzenodo.5713976%7C10.5281%2Fzenodo.5846542%7C10.5281%2Fzenodo.5883632%7C10.5281%2Fzenodo.5783347%7C10.5281%2Fzenodo.5887667%7C10.5281%2Fzenodo.6322965%7C10.5281%2Fzenodo.6396542%7C10.5281%2Fzenodo.6425599%7C10.5281%2Fzenodo.6053970%7C10.5281%2Fzenodo.6425671%7C10.5281%2Fzenodo.6448567%7C10.5281%2Fzenodo.6451322%7C10.5281%2Fzenodo.6451494%7C10.5281%2Fzenodo.6451922%7C10.5281%2Fzenodo.6452037%7C10.5281%2Fzenodo.6452090%7C10.5281%2Fzenodo.6036273%7C10.5281%2Fzenodo.6049358%7C10.5281%2Fzenodo.6452576%7C10.5281%2Fzenodo.6452651%7C10.5281%2Fzenodo.6452917%7C10.5281%2Fzenodo.6453019%7C10.5281%2Fzenodo.6453056%7C10.5281%2Fzenodo.6453071%7C10.5281%2Fzenodo.6453079%7C10.5281%2Fzenodo.6453095%7C10.5281%2Fzenodo.6453131%7C10.5281%2Fzenodo.6453135%7C10.5281%2Fzenodo.6453169%7C10.5281%2Fzenodo.6453184%7C10.5281%2Fzenodo.6453228%7C10.5281%2Fzenodo.6453277%7C10.5281%2Fzenodo.6453381%7C10.5281%2Fzenodo.6453483%7C10.5281%2Fzenodo.6462960%7C10.5281%2Fzenodo.6472995%7C10.5281%2Fzenodo.6473133%7C10.5281%2Fzenodo.5513473%7C10.5281%2Fzenodo.6522392%7C10.5281%2Fzenodo.6522522%7C10.5281%2Fzenodo.6541455%7C10.5281%2Fzenodo.6627390%7C10.5281%2Fzenodo.5725705%7C10.5281%2Fzenodo.6418520%7C10.5281%2Fzenodo.6586750%7C10.5281%2Fzenodo.6655925%7C10.5281%2Fzenodo.7007510%7C10.5281%2Fzenodo.7007656%7C10.5281%2Fzenodo.7009633%7C10.5281%2Fzenodo.7009726%7C10.5281%2Fzenodo.7009828%7C10.5281%2Fzenodo.7009878%7C10.5281%2Fzenodo.6861060%7C10.5281%2Fzenodo.6882517%7C10.5281%2Fzenodo.7038225%7C10.5281%2Fzenodo.7051350%7C10.5281%2Fzenodo.7075903%7C10.5281%2Fzenodo.7076484%7C10.5281%2Fzenodo.7079749%7C10.5281%2Fzenodo.7079804%7C10.5281%2Fzenodo.7079991%7C10.5281%2Fzenodo.7080315%7C10.5281%2Fzenodo.7086661%7C10.5281%2Fzenodo.7101806%7C10.5281%2Fzenodo.7101955%7C10.5281%2Fzenodo.7101992%7C10.5281%2Fzenodo.7151692%7C10.5281%2Fzenodo.7568074%7C10.5281%2Fzenodo.7568204%7C10.5281%2Fzenodo.7615582%7C10.5281%2Fzenodo.7684120%7C10.5281%2Fzenodo.7664102%7C10.5281%2Fzenodo.7664094%7C10.5281%2Fzenodo.7738820%7C10.5281%2Fzenodo.7738965%7C10.5281%2Fzenodo.7861162%7C10.5281%2Fzenodo.7861139%7C10.5281%2Fzenodo.7861123%7C10.5281%2Fzenodo.7858651%7C10.5281%2Fzenodo.7857828%7C10.5281%2Fzenodo.5762737%7C10.5281%2Fzenodo.7840018%7C10.5281%2Fzenodo.7560099%7C10.5281%2Fzenodo.7964809%7C10.5281%2Fzenodo.8031019%7C10.5281%2Fzenodo.8031802%7C10.5281%2Fzenodo.8031821%7C10.5281%2Fzenodo.8031834%7C10.5281%2Fzenodo.8031519%7C10.5281%2Fzenodo.8031944%7C10.5281%2Fzenodo.8032105%7C10.5281%2Fzenodo.8032211%7C10.5281%2Fzenodo.8032327%7C10.5281%2Fzenodo.8035280%7C10.5281%2Fzenodo.8035344%7C10.5281%2Fzenodo.8035352%7C10.5281%2Fzenodo.8036425%7C10.5281%2Fzenodo.8036498%7C10.5281%2Fzenodo.8036544%7C10.5281%2Fzenodo.8036828%7C10.5281%2Fzenodo.8036879%7C10.5281%2Fzenodo.8037007%7C10.5281%2Fzenodo.8037086%7C10.5281%2Fzenodo.8037235%7C10.5281%2Fzenodo.7430682%7C10.5281%2Fzenodo.8046326%7C10.5281%2Fzenodo.7430727%7C10.5281%2Fzenodo.8045887%7C10.5281%2Fzenodo.7430725%7C10.5281%2Fzenodo.8045784%7C10.5281%2Fzenodo.7430723%7C10.5281%2Fzenodo.8041593%7C10.5281%2Fzenodo.7430692%7C10.5281%2Fzenodo.8045527%7C10.5281%2Fzenodo.7430731%7C10.5281%2Fzenodo.7430733%7C10.5281%2Fzenodo.7430747%7C10.5281%2Fzenodo.8046424%7C10.5281%2Fzenodo.8046442%7C10.5281%2Fzenodo.8231570%7C10.5281%2Fzenodo.8171338%7C10.5281%2Fzenodo.8285639%7C10.5281%2Fzenodo.10026756%7C10.5281%2Fzenodo.10103271%7C10.5281%2Fzenodo.10119407%7C10.5281%2Fzenodo.10119749%7C10.5281%2Fzenodo.10120032%7C10.5281%2Fzenodo.10119985%7C10.5281%2Fzenodo.10119959%7C10.5281%2Fzenodo.10119871%7C10.5281%2Fzenodo.10119624%7C10.5281%2Fzenodo.10119539%7C10.5281%2Fzenodo.10119510%7C10.5281%2Fzenodo.10119472%7C10.5281%2Fzenodo.10119430%7C10.5281%2Fzenodo.10101029%7C10.5281%2Fzenodo.10118714%7C10.5281%2Fzenodo.10245399%7C10.5281%2Fzenodo.10246572%7C10.5281%2Fzenodo.10250533%7C10.5281%2Fzenodo.10250563%7C10.5281%2Fzenodo.10250609%7C10.5281%2Fzenodo.10251325%7C10.5281%2Fzenodo.10251408%7C10.5281%2Fzenodo.10252510%7C10.5281%2Fzenodo.10252319%7C10.5281%2Fzenodo.10252304%7C10.5281%2Fzenodo.10252250%7C10.5281%2Fzenodo.10218646%7C10.5281%2Fzenodo.10251349%7C10.5281%2Fzenodo.10264135%7C10.5281%2Fzenodo.10260233%7C10.5281%2Fzenodo.10057035%7C10.5281%2Fzenodo.10057031%7C10.5281%2Fzenodo.10057029%7C10.5281%2Fzenodo.10057013%7C10.5281%2Fzenodo.10057025%7C10.5281%2Fzenodo.10361929%7C10.5281%2Fzenodo.10404413%7C10.5281%2Fzenodo.10408375%7C10.5281%2Fzenodo.10057037%7C10.5281%2Fzenodo.10844982%7C10.5281%2Fzenodo.10785078%7C10.5281%2Fzenodo.10990924%7C10.5281%2Fzenodo.10961208%7C10.5281%2Fzenodo.10961206%7C10.5281%2Fzenodo.10961204%7C10.5281%2Fzenodo.11352061%7C10.5281%2Fzenodo.11370839%7C10.5281%2Fzenodo.11389424%7C10.5281%2Fzenodo.11389147%7C10.5281%2Fzenodo.11389207%7C10.5281%2Fzenodo.11389258%7C10.5281%2Fzenodo.11389482%7C10.5281%2Fzenodo.11389529%7C10.5281%2Fzenodo.11389553%7C10.5281%2Fzenodo.11275414%7C10.5281%2Fzenodo.11275103%7C10.5281%2Fzenodo.11275190%7C10.5281%2Fzenodo.11274695%7C10.5281%2Fzenodo.11274354%7C10.5281%2Fzenodo.11381693%7C10.5281%2Fzenodo.11345589%7C10.5281%2Fzenodo.11344773%7C10.5281%2Fzenodo.11334622%7C10.5281%2Fzenodo.11333628%7C10.5281%2Fzenodo.11332371%7C10.5281%2Fzenodo.11577374%7C10.5281%2Fzenodo.11577965%7C10.5281%2Fzenodo.11578604%7C10.5281%2Fzenodo.11579133%7C10.5281%2Fzenodo.11579456%7C10.5281%2Fzenodo.11580409%7C10.5281%2Fzenodo.11580477%7C10.5281%2Fzenodo.11580588%7C10.5281%2Fzenodo.11611393%7C10.5281%2Fzenodo.11613449%7C10.5281%2Fzenodo.11613859%7C10.5281%2Fzenodo.11657377%7C10.5281%2Fzenodo.11657639%7C10.5281%2Fzenodo.12783316%7C10.5281%2Fzenodo.12785745%7C10.5281%2Fzenodo.12785911%7C10.5281%2Fzenodo.12787400%7C10.5281%2Fzenodo.12787554%7C10.5281%2Fzenodo.12786115%7C10.5281%2Fzenodo.12790886%7C10.5281%2Fzenodo.12787976%7C10.5281%2Fzenodo.12789799%7C10.5281%2Fzenodo.12790967%7C10.5281%2Fzenodo.10090349%7C10.5281%2Fzenodo.13373914%7C10.5281%2Fzenodo.13373933%7C10.5281%2Fzenodo.13373942%7C10.5281%2Fzenodo.11657981%7C10.5281%2Fzenodo.13919783%7C10.5281%2Fzenodo.14016571%7C10.5281%2Fzenodo.11382230%7C10.5281%2Fzenodo.14190721%7C10.5281%2Fzenodo.14190868%7C10.5281%2Fzenodo.14190898%7C10.5281%2Fzenodo.14190949%7C10.5281%2Fzenodo.11382244%7C10.5281%2Fzenodo.14187014%7C10.5281%2Fzenodo.14187185%7C10.5281%2Fzenodo.14170119%7C10.5281%2Fzenodo.11382238%7C10.5281%2Fzenodo.14190657%7C10.5281%2Fzenodo.14187233%7C10.5281%2Fzenodo.14187208%7C10.5281%2Fzenodo.14187169%7C10.5281%2Fzenodo.14170165%7C10.5281%2Fzenodo.14170145%7C10.5281%2Fzenodo.14170090%7C10.5281%2Fzenodo.14170073%7C10.5281%2Fzenodo.14170024%7C10.5281%2Fzenodo.13844092%7C10.5281%2Fzenodo.11382223%7C10.5281%2Fzenodo.11382240%7C10.5281%2Fzenodo.11382246%7C10.5281%2Fzenodo.13881127%7C10.5281%2Fzenodo.14242913%7C10.5281%2Fzenodo.13926219%7C10.5281%2Fzenodo.13881042%7C10.5281%2Fzenodo.13789299%7C10.5281%2Fzenodo.14258309%7C10.5281%2Fzenodo.11382248%7C10.5281%2Fzenodo.11382215%7C10.5281%2Fzenodo.13862423%7C10.5281%2Fzenodo.13862495%7C10.5281%2Fzenodo.13850289%7C10.5281%2Fzenodo.14793947%7C10.5281%2Fzenodo.14793950%7C10.5281%2Fzenodo.13349862%7C10.5281%2Fzenodo.15144712%7C10.5281%2Fzenodo.13913181%7C10.5281%2Fzenodo.13913195%7C10.5281%2Fzenodo.13913255%7C10.5281%2Fzenodo.13913265%7C10.5281%2Fzenodo.13913273%7C10.5281%2Fzenodo.13913292%7C10.5281%2Fzenodo.15706463%7C10.5281%2Fzenodo.13931482%7C10.5281%2Fzenodo.13931439%7C10.5281%2Fzenodo.13913224%7C10.5281%2Fzenodo.15878027%7C10.5281%2Fzenodo.16416225%7C10.5281%2Fzenodo.13931517%7C10.5281%2Fzenodo.13850301%7C10.5281%2Fzenodo.17100213%7C10.5281%2Fzenodo.17358352%7C10.5281%2Fzenodo.17358519%7C10.5281%2Fzenodo.17358473%7C10.5281%2Fzenodo.17358421%7C10.5281%2Fzenodo.17358329%7C10.5281%2Fzenodo.13850355%7C10.5281%2Fzenodo.13850349%7C10.5281%2Fzenodo.13850309%7C10.5281%2Fzenodo.13850305%7C10.5281%2Fzenodo.13850303%7C10.5281%2Fzenodo.13850293%7C10.5281%2Fzenodo.17522924%7C10.5281%2Fzenodo.17523195%7C10.5281%2Fzenodo.17392843%7C10.5281%2Fzenodo.17940756%7C10.5281%2Fzenodo.13850315%7C10.5281%2Fzenodo.13850321%7C10.5281%2Fzenodo.13850325%7C10.5281%2Fzenodo.13850331%7C10.5281%2Fzenodo.13850339%7C10.5281%2Fzenodo.13850345%7C10.5281%2Fzenodo.18187022%7C10.5281%2Fzenodo.17518849%7C10.5281%2Fzenodo.17518846%7C10.5281%2Fzenodo.17518836%7C10.5281%2Fzenodo.17518808%7C10.5281%2Fzenodo.17518422%7C10.5281%2Fzenodo.17518399%7C10.5281%2Fzenodo.17518391%7C10.5281%2Fzenodo.17518372%7C10.5281%2Fzenodo.17518368%7C10.5281%2Fzenodo.17518349%7C10.5281%2Fzenodo.17518331%7C10.5281%2Fzenodo.17517789%7C10.5281%2Fzenodo.17517760%7C10.5281%2Fzenodo.17517727%7C10.5281%2Fzenodo.17517700%7C10.5281%2Fzenodo.17517676%7C10.5281%2Fzenodo.17515842%7C10.5281%2Fzenodo.17515806%7C10.5281%2Fzenodo.17515652%7C10.5281%2Fzenodo.17515558%7C10.5281%2Fzenodo.17515478%7C10.5281%2Fzenodo.17368668%7C10.5281%2Fzenodo.18196173%7C10.5281%2Fzenodo.18799442%7C10.5281%2Fzenodo.18799804%7C10.5281%2Fzenodo.18800061%7C10.5281%2Fzenodo.18800242%7C10.5281%2Fzenodo.18800413%7C10.5281%2Fzenodo.13850054%7C10.5281%2Fzenodo.17052006%7C10.5281%2Fzenodo.19084007%7C10.5281%2Fzenodo.19702935%7C10.5281%2Fzenodo.17074303%7C10.5281%2Fzenodo.17074175%7C10.5281%2Fzenodo.17074500%7C10.5281%2Fzenodo.17074410&amp;corpus=all&amp;select=id%2Cdoi</code></p></details>
+</body></html>

@@ -1,0 +1,10 @@
+# One entry per collection. The entry name is used for the target names
+# and the project folder (output/<name>/).
+# from / to: optional range of the Zenodo creation date, [from, to).
+#   ~ (or left out) = from the beginning / until now.
+#   Each range gets its own collection (max 1,000,000 members; <= 300,000 to use it as a filter).
+ipbes:
+  zenodo_community: ipbes
+  collection_name: IPBES Zenodo
+  from: ~
+  to: ~
