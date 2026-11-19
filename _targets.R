@@ -15,16 +15,12 @@ mapped <- tar_map(
   names = "name",
   tar_target(
     zenodo_check,
-    check_zenodo(cfg, file.path("output", name, "zenodo", "zenodo_ids.parquet")),
+    check_zenodo(cfg, file.path("output", name, "zenodo")),
     cue = tar_cue("always")
   ),
   tar_target(
     zenodo_ids,
-    fetch_zenodo(
-      cfg,
-      zenodo_check,
-      file.path("output", name, "zenodo", "zenodo_ids.parquet")
-    ),
+    fetch_zenodo(cfg, zenodo_check, file.path("output", name, "zenodo")),
     format = "file"
   ),
   tar_target(

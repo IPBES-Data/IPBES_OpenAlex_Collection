@@ -1,30 +1,15 @@
-# All versions in the community created in the config's from/to range. Only downloads when the check says so.
-fetch_zenodo <- function(cfg, check, file) {
-  if (!check$refetch && file.exists(file)) return(file)
-  hits <- fetch_zenodo_range(cfg, cfg$from, cfg$to)
-  chr <- \(f) vapply(hits, \(h) f(h) %||% NA_character_, "")
-  ids <- data.frame(
-    id = chr(\(h) as.character(h$id)),
-    doi = chr(\(h) h$doi),
-    conceptdoi = chr(\(h) h$conceptdoi),
-    created = chr(\(h) h$created),
-    title = chr(\(h) h$metadata$title),
-    publication_date = chr(\(h) h$metadata$publication_date),
-    resource_type = chr(\(h) h$metadata$resource_type$type),
-    version = chr(\(h) h$metadata$version),
-    access_right = chr(\(h) h$metadata$access_right),
-    version_index = vapply(hits, \(h) h$metadata$relations$version[[1]]$index %||% NA_integer_, 1L),
-    is_last = vapply(hits, \(h) h$metadata$relations$version[[1]]$is_last %||% NA, NA)
-  )
-  # One table per deposit (0 rows if none): identifier, relation, resource_type, scheme
-  ids$related_identifiers <- lapply(hits, \(h) {
-    r <- h$metadata$related_identifiers
-    f <- \(k) vapply(r, \(x) x[[k]] %||% NA_character_, "")
-    data.frame(identifier = f("identifier"), relation = f("relation"),
-               resource_type = f("resource_type"), scheme = f("scheme"))
-  })
-  stopifnot(!anyDuplicated(ids$id))
-  dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
-  arrow::write_parquet(ids, file)
-  file
+# All versions in the community created in the config's from/to range, as parquet files
+# in `dir`. Only downloads when the check says so. Downloads into a temporary folder that
+# replaces `dir` only when complete, so an interrupted download leaves the old data intact.
+fetch_zenodo <- function(cfg, check, dir) {
+  if (!check$refetch && zenodo_cached(dir)) return(dir)
+  tmp <- paste0(dir, ".tmp")
+  unlink(tmp, recursive = TRUE)
+  dir.create(tmp, recursive = TRUE)
+  fetch_zenodo_range(cfg, tmp, cfg$from, cfg$to)
+  ids <- dplyr::collect(dplyr::select(arrow::open_dataset(tmp), id))$id
+  stopifnot(!anyDuplicated(ids))
+  unlink(dir, recursive = TRUE)
+  file.rename(tmp, dir)
+  dir
 }

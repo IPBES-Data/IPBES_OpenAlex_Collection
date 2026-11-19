@@ -1,4 +1,8 @@
 _targets/
+output/
+restore/
+upload/
+MANIFEST.sha256
 .Rhistory
 .RData
 .Rproj.user/
