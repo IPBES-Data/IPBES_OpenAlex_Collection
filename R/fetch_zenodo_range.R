@@ -2,7 +2,7 @@
 # into `dir` and returns the number of records written. Only one chunk is held in memory.
 # Zenodo returns at most 10,000 results per search, so larger ranges are halved until
 # each piece fits; files are named <from>_<to>_<n>.parquet after their piece.
-fetch_zenodo_range <- function(cfg, dir, from = NULL, to = NULL, limit = 10000, chunk = 1000) {
+fetch_zenodo_range <- function(cfg, dir, from = NULL, to = NULL, limit = 10000, chunk = 10000) {
   q <- zenodo_query(from, to)
   n <- zenodo_count(cfg, q)
   if (n >= limit) {
