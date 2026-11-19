@@ -1,11 +1,16 @@
 # Configuration for https://github.com/rkrug/zenodo-openalex-collection
 # One entry per collection; the entry name is used for the folder output/<name>/.
 # from / to: optional range of the Zenodo creation date, [from, to); ~ = open end.
+# interval: month, quarter, year (default) or all
+# recheck: optional thorough check {every, interval}, interval finer than `interval`
 # access: private (default), shared_by_link or public
 ipbes:
   zenodo_community: ipbes
   collection_name: IPBES Zenodo
   from: ~
   to: ~
+  recheck:
+    every: month
+    interval: month
   access: shared_by_link
   interval: year   # moth, quarter, year or all. Missing or ~ is all
