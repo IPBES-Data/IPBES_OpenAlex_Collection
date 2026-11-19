@@ -30,6 +30,8 @@ jobs:
             echo "Restoring $tag"
             gh release download "$tag" --dir restore
             for f in restore/*.tar.gz; do tar -xzf "$f"; done
+            # macOS metadata files from locally made archives
+            find output _targets -name '._*' -delete 2>/dev/null || true
           else
             echo "No data release found, starting from scratch"
           fi
