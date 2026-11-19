@@ -1,10 +1,10 @@
-# One entry per collection. The entry name is used for the target names
-# and the project folder (output/<name>/).
-# from / to: optional range of the Zenodo creation date, [from, to).
-#   ~ (or left out) = from the beginning / until now.
-#   Each range gets its own collection (max 1,000,000 members; <= 300,000 to use it as a filter).
+# Configuration for https://github.com/rkrug/zenodo-openalex-collection
+# One entry per collection; the entry name is used for the folder output/<name>/.
+# from / to: optional range of the Zenodo creation date, [from, to); ~ = open end.
+# access: private (default), shared_by_link or public
 ipbes:
   zenodo_community: ipbes
   collection_name: IPBES Zenodo
   from: ~
   to: ~
+  access: shared_by_link

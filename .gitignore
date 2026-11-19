@@ -7,3 +7,5 @@ MANIFEST.sha256
 .RData
 .Rproj.user/
 .DS_Store
+.collection-code/
+.github/pkg.lock
