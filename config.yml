@@ -8,3 +8,4 @@ ipbes:
   from: ~
   to: ~
   access: shared_by_link
+  interval: year   # moth, quarter, year or all. Missing or ~ is all
