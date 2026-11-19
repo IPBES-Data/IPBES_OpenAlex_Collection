@@ -2,11 +2,11 @@
 
 OpenAlex collections of the deposits in Zenodo communities, updated daily by a GitHub Action.
 
-**Last successful run:** 2026-11-18 18:27 UTC
+**Last successful run:** 2026-11-19 00:36 UTC
 
 | Config | Zenodo community | Created | Zenodo records (all versions) | Concepts (deposits) | OpenAlex works | Collection | Access |
 |---|---|---|---:|---:|---:|---|---|
-| ipbes | [ipbes](https://zenodo.org/communities/ipbes) | start – now | 1033 | 566 | 565 | [col_QRAWEuXftG](https://openalex.org/collections/col_QRAWEuXftG) | shared_by_link |
+| ipbes | [ipbes](https://zenodo.org/communities/ipbes) | start – now | 1034 | 567 | 565 | [col_GKr5zhrFBJ](https://openalex.org/collections/col_GKr5zhrFBJ) | shared_by_link |
 
 ## How it works
 
