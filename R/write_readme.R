@@ -13,10 +13,16 @@ write_readme <- function(cfgs, collection_dirs, file = "README.md") {
       file.path("output", name, paste0(cfg$collection_name, ".collection"), "_collection.json")
     )
     range <- paste(cfg$from %||% "start", "–", cfg$to %||% "now")
+    ch_file <- file.path("output", name, "zenodo_changes.json")
+    change <- if (file.exists(ch_file)) {
+      ch <- jsonlite::read_json(ch_file)
+      sprintf("%s: +%d / −%d deposits (+%d / −%d records)", ch$date,
+              ch$added_deposits, ch$removed_deposits, ch$added_records, ch$removed_records)
+    } else "–"
     sprintf(
-      "| %s | [%s](https://zenodo.org/communities/%s) | %s | %d | %d | %d | %d | [%s](%s) | %s |",
+      "| %s | [%s](https://zenodo.org/communities/%s) | %s | %d | %d | %d | %d | %s | [%s](%s) | %s |",
       name, cfg$zenodo_community, cfg$zenodo_community, range,
-      z$records, z$concepts, z$first, col$member_count,
+      z$records, z$concepts, z$first, col$member_count, change,
       col$collection_id, col$collection_url, col$access
     )
   }, "")
@@ -25,10 +31,12 @@ write_readme <- function(cfgs, collection_dirs, file = "README.md") {
     "",
     "OpenAlex collections of the deposits in Zenodo communities, updated daily by a GitHub Action.",
     "",
-    sprintf("**Last successful run:** %s UTC", format(Sys.time(), "%Y-%m-%d %H:%M", tz = "UTC")),
+    sprintf("**Last successful run:** %s UTC (pipeline runtime %.1f min)",
+            format(Sys.time(), "%Y-%m-%d %H:%M", tz = "UTC"),
+            proc.time()[["elapsed"]] / 60), # elapsed time of the R process running tar_make()
     "",
-    "| Config | Zenodo community | Created | Zenodo records (all versions) | Deposits with a version in range | Deposits first created in range | OpenAlex works | Collection | Access |",
-    "|---|---|---|---:|---:|---:|---:|---|---|",
+    "| Config | Zenodo community | Created | Zenodo records (all versions) | Deposits with a version in range | Deposits first created in range | OpenAlex works | Last change on Zenodo | Collection | Access |",
+    "|---|---|---|---:|---:|---:|---:|---|---|---|",
     rows,
     "",
     "## How it works",
