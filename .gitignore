@@ -9,3 +9,4 @@ MANIFEST.sha256
 .DS_Store
 .collection-code/
 .github/pkg.lock
+zenodo_openalex_collection.code-workspace
