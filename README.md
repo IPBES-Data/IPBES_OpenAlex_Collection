@@ -2,11 +2,11 @@
 
 OpenAlex collections of the deposits in Zenodo communities, updated by [zenodo-openalex-collection](https://github.com/rkrug/zenodo-openalex-collection).
 
-**Last successful run:** 2026-11-19 13:46 UTC (pipeline runtime 6.8 min)
+**Last successful run:** 2026-11-20 00:48 UTC (pipeline runtime 0.7 min)
 
 | Config | Zenodo community | Created | Check interval; recheck | Zenodo records (all versions) | Deposits with a version in range | Deposits first created in range | OpenAlex works | Last change on Zenodo | Collection | Access |
 |---|---|---|---|---:|---:|---:|---:|---|---|---|
-| ipbes | [ipbes](https://zenodo.org/communities/ipbes) | start – now | year; by month every month (last 2026-11-19) | 1034 | 567 | 567 | 565 | 2026-11-19 13:46: +0 / −0 deposits (+0 / −0 records) | [col_GG6iTenVqa](https://openalex.org/collections/col_GG6iTenVqa) | shared_by_link |
+| ipbes | [ipbes](https://zenodo.org/communities/ipbes) | start – now | year; by month every month (last 2026-11-19) | 1034 | 567 | 567 | 566 | 2026-11-19 13:46: +0 / −0 deposits (+0 / −0 records) | [col_GG6iTenVqa](https://openalex.org/collections/col_GG6iTenVqa) | shared_by_link |
 
 ## How it works
 
