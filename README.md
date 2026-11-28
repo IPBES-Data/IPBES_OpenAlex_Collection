@@ -2,7 +2,7 @@
 
 OpenAlex collections of the deposits in Zenodo communities, updated by [zenodo-openalex-collection](https://github.com/rkrug/zenodo-openalex-collection).
 
-**Last successful run:** 2026-11-27 00:33 UTC (pipeline runtime 0.5 min)
+**Last successful run:** 2026-11-28 00:32 UTC (pipeline runtime 0.5 min)
 
 | Config | Zenodo community | Created | Check interval; recheck | Zenodo records (all versions) | Deposits with a version in range | Deposits first created in range | OpenAlex works | Last change on Zenodo | Collection | Access |
 |---|---|---|---|---:|---:|---:|---:|---|---|---|
